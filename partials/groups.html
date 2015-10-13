@@ -31,13 +31,13 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>{{ totals.totalHours | number }}</td>
+                        <td>{{ currentGroup.hours | number }}</td>
                         <td></td>
-                        <td>{{ totals.totalCost | currency:"$ ":0 }}</td>
+                        <td>{{ currentGroup.forecast | currency:"$ ":0 }}</td>
                         <td></td>
                     </tfoot>
                     <tbody>
-                        <tr ng-repeat="resource in resources">
+                        <tr ng-repeat="resource in currentGroup.resources">
                             <td><a href="#/tasks">{{ resource.id }}</a></td>
                             <td>{{ resource.name }}</td>
                             <td> {{ resource.rate | currency:"$ ":0}}</td>

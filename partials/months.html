@@ -1,3 +1,41 @@
+<!-- Overview -->
+<div class="container-fluid">
+    <h2>{{ project.name }}</h2>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Actual</th>
+                <th>Forecast</th>
+                <th>Variance</th>
+                <th>Headwind</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="task in project.tasks">
+                <td><a href="#/groups/{{ task.id }}">{{ task.name }}</a></td>
+                <td>{{ task.actual | currency:"$ ":0 }}</td>
+                <td>{{ task.forecast | currency:'$ ':0 }} </td>
+                <td>{{ task.forecast - task.actual | currency:"$ ":0 }}</td>
+                <td>{{ (task.forecast - task.actual) *3 | currency:"$ ":0 }}</td>
+                <td>
+                    <span class = "glyphicon glyphicon-remove" data="{{ task.id }}" 
+                              ng-click="removeTask(task.id)" aria-hidden="true"></span>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td>Totals</td>
+            <td>{{ project.actual | currency:"$ ":0 }} </td>
+            <td>{{ project.forecast | currency:"$ ":0 }}</td>
+            <td>{{ project.forecast - project.actual | currency:"$ ":0 }} </td>
+            <td></td>
+        </tfoot>
+    </table>
+</div>
+
+<!-- Months -->
 <div id="accordian" class="panel-group">
     <!-- Define the first panel -->
     <div class="panel panel-default">
@@ -6,27 +44,9 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">January</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Actual</th>
-                            <th>Forecast</th>
-                            <th>Variance</th>
-                            <th>Headwind</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="cost in costs">
-                            <td><a href="#/groups">{{ cost.item }}</a></td>
-                            <td>{{ cost.actual | currency:"$ ":0 }}</td>
-                            <td><input type="text" value= "{{ cost.forecast | currency:'$ ':0 }}" /></td>
-                            <td>{{ cost.forecast - cost.actual | currency:"$ ":0 }}</td>
-                            <td>{{ (cost.actual - cost.forecast)*2 | currency:"$ ":0 }}</td>
-                        </tr>
-                </table>
+                <h4>January Panel</h4>
             </div>
         </div>
     </div><!-- End Panel 1 -->
@@ -39,8 +59,9 @@
         </div>
         <div id="collapseTwo" class="panel-collapse collapse">
             <div class="panel-body">
-                <h3>Hello</h3>
+                <h3>February Panel</h3>
             </div>
         </div>
     </div>
 </div>
+<h4>Etc...</h4>
